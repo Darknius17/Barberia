@@ -15,18 +15,22 @@ return new class extends Migration
     {
         Schema::create('agendas', function (Blueprint $table) {
             $table->id();
+
             $table->integer('id_servicio');
+            $table->string('title');
+            $table->datetime('start');
+            $table->datetime('end');
             $table->string('nombreCliente');
             $table->string('email');
-            $table->string('rut');  
-            $table->integer('telefono');  
-            $table->date('dia');  
-            $table->string('hora');  
-            $table->string('comentario');  
-   
-            
-            
-            
+            $table->string('rut');
+            $table->integer('telefono');
+            $table->date('dia');
+            $table->string('hora');
+            $table->string('comentario');
+
+
+
+
             $table->timestamps();
         });
     }

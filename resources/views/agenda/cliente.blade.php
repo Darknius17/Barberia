@@ -27,25 +27,35 @@
             </div>
             <div class="modal-body">
 
-                <form action="">
+                <form action="" id="formulariomodal">
                      @csrf
                     {!! csrf_field() !!}
 
+                    <div class="form-group" hidden>
+                        <label for="id">ID:</label>
+                        <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId" placeholder="">
+                        <small id="helpId" class="form-text text-muted">Help text</small>
+                      </div>
+                      
+
                     <div class="form-group">
                         <label for="title">Titulo</label>
-                        <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId" placeholder="">
+                        <input type="text" class="form-control" name="title" id="title"  aria-describedby="helpId" placeholder="">
                         <small id="helpId" class="form-text text-muted">Help text</small>
+
+
+
                       </div>
 
                       <div class="form-group">
                         <label for="start">Start</label>
-                        <input type="text" class="form-control" name="start" id="start" aria-describedby="helpId" placeholder="">
+                        <input type="datetime-local" class="form-control" name="start" id="start" aria-describedby="helpId" placeholder="" value=""  >
                         <small id="helpId" class="form-text text-muted">Help text</small>
                       </div>
 
                       <div class="form-group">
-                        <label for="End">End</label>
-                        <input type="text" class="form-control" name="End" id="End" aria-describedby="helpId" placeholder="">
+                        <label for="end">End</label>
+                        <input type="datetime-local" class="form-control" name="end" id="end" aria-describedby="helpId" placeholder=""  >
                         <small id="helpId" class="form-text text-muted">Help text</small>
                       </div>
 
