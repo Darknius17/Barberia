@@ -14,7 +14,7 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="{{ asset('js\agenda.js') }}" defer></script>
+
 
 
         <!-- Styles -->
@@ -39,7 +39,7 @@
       <a class="navbar-brand text-white" href="{{ url('/tienda') }}">Productos</a>
       <a class="navbar-brand text-white" href="#" ></a>
       <a class="navbar-brand text-white" href="#" ></a>
-      <a class="navbar-brand" href="{{url('/carro')}}" ><img src="{!! asset('images/Car.png') !!}" width="30px" height="30px" class = "row"  ></a>
+      <a class="navbar-brand" href="{{url('/carro')}}" hidden><img src="{!! asset('images/Car.png') !!}" width="30px" height="30px" class = "row"  ></a>
       <a class="navbar-brand" href="{{ url('/horas') }}"><img src="{!! asset('images/Person.png') !!}" width="30px" height="30px" class = "row"  ></a>
       <a class="navbar-brand text-white" href="#" ></a>
 
@@ -47,5 +47,8 @@
 
 
   </nav>
-  <script src="{{ asset('js/agenda.js') }}" defer></script>
+
+
+
+
 </html>

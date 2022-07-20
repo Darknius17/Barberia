@@ -2,23 +2,23 @@
 <h6 class="navbar-heading text-muted">Adminisitración</h6>
 <ul class="navbar-nav">
     <li class="nav-item">
-        <a class="nav-link" href="../index.html">
-            <i class="ni ni-tv-2 text-primary"></i> Dashboard
+        <a class="nav-link" href="{{route('tienda.index')}}">
+            <i class="ni ni-tv-2 text-primary"></i> Ver productos
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="../examples/icons.html">
+        <a class="nav-link" href="{{route('agenda.index')}}">
             <i class="ni ni-calendar-grid-58 text-orange"></i> Horas
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="../examples/maps.html">
+        <a class="nav-link" href="{{route('users.index')}}">
             <i class="ni ni-single-02 text-red "></i> Clientes
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ url('/productos') }}">
-            <i class="ni ni-app text-yellow"></i> Productos
+            <i class="ni ni-app text-yellow"></i> Productos Gestion
         </a>
     </li>
 

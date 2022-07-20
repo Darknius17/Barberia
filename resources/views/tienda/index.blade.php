@@ -21,7 +21,7 @@
             <div class="col-12 ">
                 <h2 class="page-header text-center">Nuestros Productos</h2>
             </div>
-            <div class="container  text-dark text-center gris ">
+            <div class="container  text-dark text-center gris " hidden>
                 <div class="row justify-content-between  ">
                     <div class="col-2 text-end mt-2 ">Ordenar por </div>
                     <div class="col-2  "> <select class=" form-select col-3  text-dark ">
@@ -48,27 +48,27 @@
     <div class="container mt-5 mb-5  ">
       <div class="row row-cols-md-5 g-4">
 @foreach ($productos as $producto)
-    
 
-  
+
+
             <div class="col">
               <div class="card h-100 text-dark " >
-                
+
                <a href="{{route('tienda.show', $producto)}}"> <img src="{{ asset($producto->imagen)}}" class="card-img-top gris " > </a>
                 <div class="card-body gris">
                   <h5 class="card-title text-center">{{$producto->nombre}}</h5>
                   <p class="card-text text-center">${{$producto->precio}}</p>
                   <p class="card-text text-center">{{$producto->puntuacion}} Estrellas</p>
-                <div class="text-center">  <button type="button" class="btn btn-warning ">Agregar al Carro</button> </div>
+                <div class="text-center">  <button type="button" class="btn btn-warning " hidden>Agregar al Carro</button> </div>
                 </div>
 
               </div>
             </div>
-           
 
-    @endforeach  
 
-  </div> 
+    @endforeach
+
+  </div>
   <div class="mt-3"> {{$productos->links('pagination::bootstrap-4')}}   </div>
 </div>
 
@@ -82,7 +82,7 @@
                     <p class="card-text text-center">aqui van las estrellas</p>
                   <div class="text-center">  <button type="button" class="btn btn-outline-dark ">Agregar al Carro</button> </div>
                   </div>
-  
+
                 </div>
               </div>
 
@@ -95,21 +95,21 @@
                     <p class="card-text text-center">aqui van las estrellas</p>
                   <div class="text-center">  <button type="button" class="btn btn-outline-dark ">Agregar al Carro</button> </div>
                   </div>
-  
+
                 </div>
               </div>
                --}}
-            
 
 
 
 
-            
 
 
 
 
-         
+
+
+
 
 
 
@@ -119,7 +119,7 @@
 </body>
 <div class="position-absolute bottom-0 start-0 col-12">
 
-  
+
 </div>
 
 

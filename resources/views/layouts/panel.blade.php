@@ -179,7 +179,7 @@
         <div class="container-fluid mt--7">
 
             @yield('content')
-            
+
 
         </div>
 

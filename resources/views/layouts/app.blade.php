@@ -34,7 +34,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/index') }}">
+                <a class="navbar-brand" href="{{ url('/index') }}" hidden>
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -75,9 +75,27 @@
                                         {{ __('Logout') }}
                                     </a>
 
+
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
+
+
+
                                     </form>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); document.getElementById('formLogout').submit();">
+                                            <i class="ni ni-key-25 text-info"></i> Cerrar Sesión
+                                        </a>
+                                        <form method="POST" action="{{ route('logout') }}" style="display: none;" id="formLogout">
+                                            @csrf
+
+                                        </form>
+                                    </li>
+                                </ul>
+
                                 </div>
                             </li>
                         @endguest
@@ -86,7 +104,6 @@
             </div>
         </nav>
         <script src="{{ asset('js\agenda.js') }}" defer></script>
-        <script src="{{ asset('js\agenda1.js') }}" defer></script>
         <main class="py-4">
             @yield('content')
         </main>

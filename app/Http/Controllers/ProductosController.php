@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class ProductosController extends Controller
 {
+
+    public function __construct()
+    {
+
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +24,7 @@ class ProductosController extends Controller
     {
         $filtro =$request->get('filtro');
         $productos = Productos::where('nombre','like','%'.$filtro.'%')->paginate(5);
-        
+
         return view('tienda.productos', compact('productos','filtro'));
     }
 
@@ -29,8 +35,8 @@ class ProductosController extends Controller
      */
     public function create()
     {
-        
-        
+
+
         return view('tienda.crear');
 
     }
@@ -53,7 +59,7 @@ class ProductosController extends Controller
             'puntuacion'=> 'required'
             ]);
 
-        
+
         $productos = new Productos();
         $img  = $request->file('imagen')->store('public/imagenes');
         $url = Storage::url($img);
@@ -65,7 +71,7 @@ class ProductosController extends Controller
         $productos->imagen = $url ;
         $productos->puntuacion = $request->puntuacion;
 
-       
+
         $productos->save();
 
 
@@ -76,7 +82,7 @@ class ProductosController extends Controller
       //  ]);
 
         return  redirect()->route('tienda.productos') ;
-       
+
     }
 
     /**
@@ -95,7 +101,7 @@ class ProductosController extends Controller
     }
 
 
- 
+
 
     /**
      * Show the form for editing the specified resource.
@@ -107,7 +113,7 @@ class ProductosController extends Controller
     {
 
         $productos = Productos::find($id);
-   
+
         return view('tienda.editar', compact('productos'));
     }
 
@@ -122,15 +128,15 @@ class ProductosController extends Controller
             'stock'=> 'required',
             'imagen'=> 'required',
             'puntuacion'=> 'required'
-            
+
 
 
         ]);
 
-        
+
         $img  = $request->file('imagen')->store('public/imagenes');
         $url = Storage::url($img);
-        
+
         $productos->nombre = $request->nombre;
         $productos->precio = $request->precio;
         $productos->detalles = $request->detalles;
@@ -138,7 +144,7 @@ class ProductosController extends Controller
         $productos->imagen = $url;
         $productos->puntuacion = $request->puntuacion;
         $productos->save();
-      
+
         return redirect()->route('tienda.productos');
     }
 
@@ -151,7 +157,7 @@ class ProductosController extends Controller
     public function destroy( productos $productos)
     {
 
-       
+
             $borrar = str_replace('storage','public',$productos->imagen);
 
             Storage::delete($borrar);

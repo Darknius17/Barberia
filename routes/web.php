@@ -40,8 +40,12 @@ Route::get('/admin', function () {
     return view('admin.indexAdmin');
 });
 
-Route::get('/horas', function () {
-    return view('agenda.gestionHoras');
+Route::middleware(['auth', 'admin'])->group(function () {
+
+    Route::get('/horas', function () {
+        return view('agenda.gestionHoras');
+
+    });;
 });
 
 
@@ -76,6 +80,9 @@ Route::get('/reserva', function () {
  Route::get('/carro', function () {
     return view('tienda.carrito');
  });
+ Route::get('/holas', function () {
+    return view('users.editar');
+ });
 
 
 
@@ -86,8 +93,7 @@ Route::get('/reserva', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/agendamiento', [App\Http\Controllers\EventoController::class, 'index']);
-Route::post('/agendamiento/agregar', [App\Http\Controllers\EventoController::class, 'store']);
+
 
 //Productos
 Route::prefix('productos')->group(function(){
@@ -126,10 +132,11 @@ Route::prefix('agenda')->group(function(){
     Route::post('/reserva/borrar/{id}',[ AgendaController::class, 'destroy1' ])->name('agenda.borrar1');
     Route::post('/reserva/actualizar/{agenda}',[ AgendaController::class, 'update1' ])->name('agenda.actualizar1');
 
-    Route::get('/reserva/{agenda}',[ ProductosController::class, 'mostrar' ])->name('tienda.show');
+
 
 
 });
+
 
 //Servicio
 Route::prefix('servicio')->group(function(){
@@ -140,6 +147,19 @@ Route::prefix('servicio')->group(function(){
     Route::get('/editar/{id}',[ ServiciosController::class, 'edit' ])->name('servicio.editar');
     Route::put('/editar/{servicios}',[ ServiciosController::class, 'update' ])->name('servicio.actualizar');
     Route::delete('/editar/{servicios}',[ ServiciosController::class, 'destroy' ])->name('servicio.eliminar');
+
+
+
+});
+
+Route::prefix('gestion')->group(function(){
+
+    Route::get('/',[ EventoController::class, 'index' ])->name('users.index');
+    Route::get('/crear',[ EventoController::class, 'create' ])->name('users.crear');
+    Route::post('/crear',[ EventoController::class, 'store' ])->name('users.store');
+    Route::get('/editar/{id}',[ EventoController::class, 'edit' ])->name('users.editar');
+    Route::put('/editar/{user}',[ EventoController::class, 'update' ])->name('users.actualizar');
+    Route::delete('/editar/{user}',[ EventoController::class, 'destroy' ])->name('users.eliminar');
 
 
 
