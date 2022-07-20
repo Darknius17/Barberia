@@ -85,8 +85,6 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-
-
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -637,8 +635,6 @@ progress {
   margin-right: auto;
   margin-left: auto;
 }
-
-
 
 @media (min-width: 576px) {
   .container-sm, .container {
