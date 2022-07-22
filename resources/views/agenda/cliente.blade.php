@@ -52,13 +52,13 @@
 
                       <div class="form-group">
                         <label for="start">Fecha reserva iniciada</label>
-                        <input type="datetime-local" class="form-control" name="start" id="start" aria-describedby="helpId" placeholder="" value=""  >
+                        <input type="datetime-local" min="2021-07-22T00:00" max="2022-07-22T02:00"class="form-control" name="start" id="start" aria-describedby="helpId" placeholder="" value=""  >
                         <small id="helpId" class="form-text text-muted">Seleccione la Hora y dia de Reserva</small>
                       </div>
 
                       <div class="form-group">
                         <label for="end">Fecha reserva terminada</label>
-                        <input type="datetime-local" class="form-control" name="end" id="end" aria-describedby="helpId" placeholder=""  >
+                        <input type="datetime-local" class="form-control" step="600" name="end" id="end" aria-describedby="helpId" placeholder=""  >
                         <small id="helpId" class="form-text text-muted"></small>
                       </div>
 
@@ -74,7 +74,7 @@
 
                     <div class="form-group">
                       <label for="email">Email</label>
-                      <input type="text" class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="">
+                      <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="">
                       <small id="helpId" class="form-text text-muted">Ingrese su email</small>
                     </div>
                     <div class="form-group">
@@ -90,15 +90,15 @@
                       </div>
 
 
-                      <div class="form-group" hidden>
+                      <div class="form-group" hidden >
                         <label for="dia" >Dia</label>
-                        <input type="date" class="form-control" name="dia" id="dia" aria-describedby="helpId" placeholder="">
+                        <input type="text" class="form-control" name="dia" id="dia" aria-describedby="helpId" placeholder="">
                         <small id="helpId" class="form-text text-muted">Help text</small>
                       </div>
 
-                      <div class="mb-3">
-                        <label for="hora" class="form-group" hidden >Hora</label>
-                        <select type="number" class="form-control" id="hora" placeholder="  " name="hora" value="{{old('hora')}}" hidden>
+                      <div class="mb-3" hidden>
+                        <label for="hora" class="form-group"   >Hora</label>
+                        <select type="number" class="form-control" id="hora" placeholder="  " name="hora" value="{{old('hora')}}" >
                           <option> 11:00 </option>
                           <option> 12:00 </option>
                           <option> 13:00 </option>

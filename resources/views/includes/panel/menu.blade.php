@@ -1,6 +1,8 @@
 <!-- Navigation -->
 <h6 class="navbar-heading text-muted">Adminisitración</h6>
 <ul class="navbar-nav">
+
+
     <li class="nav-item">
         <a class="nav-link" href="{{route('tienda.index')}}">
             <i class="ni ni-tv-2 text-primary"></i> Ver productos
@@ -21,7 +23,6 @@
             <i class="ni ni-app text-yellow"></i> Productos Gestion
         </a>
     </li>
-
     <li class="nav-item">
         <a class="nav-link" href="{{ route('logout') }}"
             onclick="event.preventDefault(); document.getElementById('formLogout').submit();">
@@ -32,6 +33,7 @@
 
         </form>
     </li>
+
 </ul>
 
 

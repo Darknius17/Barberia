@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
        hiddenDays: [0],
        events: "http://localhost:8080/barberia1/barberia/public/agenda/reserva/show",
 
+
+
        businessHours: [ // specify an array instead
   {
     daysOfWeek: [ 1, 2, 3,4,5 ], // Monday, Tuesday, Wednesday
@@ -36,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
     formulario.reset();
 
 
-    formulario.dia.value=info.dateStr;
-    formulario.start.value=info.startStr;
+    formulario.dia.value=info.dateStr +" "+ formulario.hora.value;
+    formulario.start.value=info.startStr +" "+ formulario.hora.value;
     formulario.end.value=info.endStr;
 
 
@@ -60,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
     formulario.email.value = respuesta.data.email;
     formulario.rut.value = respuesta.data.rut;
     formulario.telefono.value = respuesta.data.telefono;
-    formulario.dia.value = respuesta.data.dia;
+    formulario.dia.value = respuesta.data.dia +" "+ respuesta.data.hora;
     formulario.hora.value = respuesta.data.hora;
     formulario.comentario.value = respuesta.data.comentario;
     formulario.id_servicio.value = respuesta.data.id_servicio;
@@ -105,6 +107,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     alert("Se a Modificado con exito su hora");
 
+
+  });
+
+  document.getElementById("start").addEventListener("",function(){
 
   });
 
