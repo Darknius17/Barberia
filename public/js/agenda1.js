@@ -1,4 +1,4 @@
-
+/*
 document.addEventListener('DOMContentLoaded', function() {
 
    let formulario1 = document.querySelector("form");
@@ -13,6 +13,10 @@ document.addEventListener('DOMContentLoaded', function() {
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
+
+
+
+
       dateClick:function(infos){
 
         $("#events").modal("show");
@@ -56,3 +60,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 });
+
+*/

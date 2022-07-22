@@ -9,8 +9,19 @@ use Illuminate\Http\Request;
 
 class ServiciosController extends Controller
 {
+
+    public function __construct()
+    {
+
+        $this->middleware('auth');
+    }
+
+
     /**
-     * Display a listing of the resource.
+
+
+
+    * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -18,8 +29,8 @@ class ServiciosController extends Controller
     {
         $filtro =$request->get('filtro');
         $servicios = Servicios::where('nombre','like','%'.$filtro.'%')->paginate(5);
-        
-        
+
+
         return view('servicio.index', compact('servicios', 'filtro' ));
     }
 
@@ -48,13 +59,13 @@ class ServiciosController extends Controller
             'valor'=> 'required',
         ]);
 
-        
+
         $servicios = new Servicios();
 
         $servicios->nombre = $request->nombreServicio;
         $servicios->descripcion = $request->descripcionServicio;
         $servicios->valor = $request->valor;
-    
+
 
         $servicios->save();
 
@@ -81,7 +92,7 @@ class ServiciosController extends Controller
     public function edit($id)
     {
         $servicios = Servicios::find($id);
-   
+
         return view('servicio.editar', compact('servicios'));
     }
 
@@ -98,12 +109,12 @@ class ServiciosController extends Controller
         ]);
 
 
-        
+
         $servicios->nombre = $request->nombreServicio;
         $servicios->descripcion = $request->descripcionServicio;
         $servicios->valor = $request->valor;
         $servicios->save();
-      
+
         return redirect()->route('servicio.index');
     }
 

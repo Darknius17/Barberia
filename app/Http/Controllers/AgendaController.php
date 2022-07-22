@@ -6,10 +6,18 @@ use App\Models\Agenda;
 use Illuminate\Http\Request;
 use App\Models\Agendaservicios;
 use App\Models\Servicios;
+use Carbon\Carbon;
 
 
 class AgendaController extends Controller
 {
+
+    public function __construct()
+    {
+
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -62,6 +70,9 @@ class AgendaController extends Controller
         $agenda->hora = $request->hora;
         $agenda->comentario = $request->comentario;
         $agenda->id_servicio = $request->id_servicio;
+        $agenda->title = $request->title;
+        $agenda->start = $request->start;
+        $agenda->end = $request->end;
 
 
 
@@ -79,8 +90,8 @@ class AgendaController extends Controller
      */
     public function show(Agendaservicios $agendaservicios, Agenda $agenda)
     {
-        $agendaservicios = Agendaservicios::all();
-
+        $agenda = Agendaservicios::all();
+        $agendaservicios = Agenda::all();
          return response()->json($agendaservicios);
 
 
@@ -92,7 +103,7 @@ class AgendaController extends Controller
 
         return view('agenda.cliente',compact('agenda'), compact('servicios'));
     }
-   /*
+
     public function store1(Request $request)
     {
         $request->validate([
@@ -107,10 +118,10 @@ class AgendaController extends Controller
             'id_servicio'=> 'required'
         ]);
 
-        $agenda=Agendaservicios::create($request->all());
+        $agendaservicios = Agenda::create($request->all());
 
     }
-    */
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -123,6 +134,19 @@ class AgendaController extends Controller
         $agenda = Agendaservicios::find($id);
 
         return view('agenda.editar', compact('agenda','servicios'));
+    }
+
+
+    public function edit1($id)
+    {
+
+        $agendaservicios = Agenda::find($id);
+
+      // $agendaservicios->start = Carbon::createFromFormat('Y-m-d H:i:s' , $agendaservicios->start)->format('Y-m-d');
+    //   $agendaservicios->end = Carbon::createFromFormat('Y-m-d H:i:s' , $agendaservicios->end)->format('Y-m-d');
+
+
+        return response()->json($agendaservicios);
     }
 
     public function update(Request $request, agenda $agenda)
@@ -166,4 +190,36 @@ class AgendaController extends Controller
 
         return redirect()->route('agenda.index');
     }
+
+    public function destroy1($id)
+    {
+
+        $agendaservicios = Agenda::find($id)->delete();
+
+        return response()->json($agendaservicios);
+
+
+    }
+
+        public function update1(Request $request, Agenda $agenda){
+
+            $request->validate([
+
+                'nombreCliente'=> 'required',
+                'email'=> 'required',
+                'rut'=> 'required',
+                'telefono'=> 'required',
+                'dia' => 'required',
+                'hora' => 'required',
+                'comentario'=> 'required',
+                'id_servicio'=> 'required'
+
+
+
+            ]);
+
+            $agenda->update($request->all());
+            return response()->json($agenda);
+
+        }
 }

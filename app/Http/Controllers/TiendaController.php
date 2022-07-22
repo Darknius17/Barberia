@@ -7,6 +7,9 @@ use App\Models\Productos;
 
 class TiendaController extends Controller
 {
+
+
+ 
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +18,7 @@ class TiendaController extends Controller
     public function index()
     {
         $productos = Productos::paginate(5);
-        
+
         return view('tienda.index', compact('productos'));
     }
 
@@ -26,7 +29,7 @@ class TiendaController extends Controller
      */
     public function create()
     {
-        // 
+        //
     }
 
     /**

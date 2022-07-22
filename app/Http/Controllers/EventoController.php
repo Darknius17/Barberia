@@ -3,18 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evento;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EventoController extends Controller
 {
+
+    public function __construct()
+    {
+
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('agenda.agenda');
+        $filtro =$request->get('filtro');
+        $user = User::where('name','like','%'.$filtro.'%')->paginate(5);
+
+
+        return view('users.index', compact('user', 'filtro' ));
     }
 
     /**
@@ -24,7 +37,7 @@ class EventoController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.crear');
     }
 
     /**
@@ -35,10 +48,24 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
-        $request()->validate(Evento::$rules);
-        $evento=Evento::create($request->all());
+        $request->validate([
+
+            'name'=> 'required',
+            'email'=> 'required',
+            'password'=> 'required',
+        ]);
 
 
+        $user = new User();
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+
+
+        $user->save();
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -58,9 +85,11 @@ class EventoController extends Controller
      * @param  \App\Models\Evento  $evento
      * @return \Illuminate\Http\Response
      */
-    public function edit(Evento $evento)
+    public function edit($id)
     {
-        //
+        $user = User::find($id);
+
+        return view('users.editar', compact('user'));
     }
 
     /**
@@ -70,9 +99,26 @@ class EventoController extends Controller
      * @param  \App\Models\Evento  $evento
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Evento $evento)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+
+            'name'=> 'required',
+            'email'=> 'required',
+            'password'=> 'required',
+        ]);
+
+
+
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+
+
+        $user->save();
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -81,8 +127,10 @@ class EventoController extends Controller
      * @param  \App\Models\Evento  $evento
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Evento $evento)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect()->route('users.index')->with('usuario','borrar');
     }
 }

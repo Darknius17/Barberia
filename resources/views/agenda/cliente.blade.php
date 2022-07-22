@@ -9,11 +9,14 @@
 
 
 
-    <div id="agenda"> CALENDARIO</div>
+
+
+
+    <div id="agenda"> </div>
 </div>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#evento">
+<button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#evento" hidden>
   Launch
 </button>
 
@@ -22,31 +25,41 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
+                <h5 class="modal-title">RESERVA DE HORA</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
 
-                <form action="">
+                <form action="" id="formulariomodal">
                      @csrf
                     {!! csrf_field() !!}
 
-                    <div class="form-group">
-                        <label for="title">Titulo</label>
-                        <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId" placeholder="">
+                    <div class="form-group" hidden>
+                        <label for="id">ID:</label>
+                        <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId" placeholder="">
                         <small id="helpId" class="form-text text-muted">Help text</small>
                       </div>
 
-                      <div class="form-group">
-                        <label for="start">Start</label>
-                        <input type="text" class="form-control" name="start" id="start" aria-describedby="helpId" placeholder="">
+
+                    <div class="form-group" hidden>
+                        <label for="title">Nombre cliente</label>
+                        <input type="text" class="form-control" name="title" id="title" value="Hora Reservada" aria-describedby="helpId" placeholder="">
                         <small id="helpId" class="form-text text-muted">Help text</small>
+
+
+
                       </div>
 
                       <div class="form-group">
-                        <label for="End">End</label>
-                        <input type="text" class="form-control" name="End" id="End" aria-describedby="helpId" placeholder="">
-                        <small id="helpId" class="form-text text-muted">Help text</small>
+                        <label for="start">Fecha reserva iniciada</label>
+                        <input type="datetime-local" class="form-control" name="start" id="start" aria-describedby="helpId" placeholder="" value=""  >
+                        <small id="helpId" class="form-text text-muted">Seleccione la Hora y dia de Reserva</small>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="end">Fecha reserva terminada</label>
+                        <input type="datetime-local" class="form-control" name="end" id="end" aria-describedby="helpId" placeholder=""  >
+                        <small id="helpId" class="form-text text-muted"></small>
                       </div>
 
 
@@ -54,38 +67,38 @@
 
                     <div class="form-group">
                       <label for="nombreCliente">Nombre Cliente</label>
-                      <input type="text" class="form-control" name="nombreCliente" id="nombreCliente" aria-describedby="helpId" placeholder="">
-                      <small id="helpId" class="form-text text-muted">Help text</small>
+                      <input type="text" class="form-control" name="nombreCliente" id="nombreCliente"  aria-describedby="helpId" placeholder="">
+                      <small id="helpId" class="form-text text-muted">Ingrese su nombre</small>
                     </div>
 
 
                     <div class="form-group">
                       <label for="email">Email</label>
-                      <input type="text" class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="escribe el titulo del evento">
-                      <small id="helpId" class="form-text text-muted">Help text</small>
+                      <input type="text" class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="">
+                      <small id="helpId" class="form-text text-muted">Ingrese su email</small>
                     </div>
                     <div class="form-group">
                         <label for="rut">Rut</label>
-                        <input type="text" class="form-control" name="rut" id="rut" aria-describedby="helpId" placeholder="escribe el titulo del evento">
-                        <small id="helpId" class="form-text text-muted">Help text</small>
+                        <input type="text" class="form-control" name="rut" id="rut" aria-describedby="helpId" placeholder="">
+                        <small id="helpId" class="form-text text-muted">Ingrese su rut</small>
                       </div>
 
                       <div class="form-group">
                         <label for="telefono">Telefono</label>
-                        <input type="text" class="form-control" name="telefono" id="telefono" aria-describedby="helpId" placeholder="escribe el titulo del evento">
-                        <small id="helpId" class="form-text text-muted">Help text</small>
+                        <input type="text" class="form-control" name="telefono" id="telefono" aria-describedby="helpId" placeholder="">
+                        <small id="helpId" class="form-text text-muted">Ingrese su telefono</small>
                       </div>
 
 
-                      <div class="form-group">
-                        <label for="dia">Dia</label>
-                        <input type="date" class="form-control" name="dia" id="dia" aria-describedby="helpId" placeholder="escribe el titulo del evento">
+                      <div class="form-group" hidden>
+                        <label for="dia" >Dia</label>
+                        <input type="date" class="form-control" name="dia" id="dia" aria-describedby="helpId" placeholder="">
                         <small id="helpId" class="form-text text-muted">Help text</small>
                       </div>
 
                       <div class="mb-3">
-                        <label for="hora" class="form-group">Hora</label>
-                        <select type="number" class="form-control" id="hora" placeholder="  " name="hora" value="{{old('hora')}}">
+                        <label for="hora" class="form-group" hidden >Hora</label>
+                        <select type="number" class="form-control" id="hora" placeholder="  " name="hora" value="{{old('hora')}}" hidden>
                           <option> 11:00 </option>
                           <option> 12:00 </option>
                           <option> 13:00 </option>

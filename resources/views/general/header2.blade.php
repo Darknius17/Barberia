@@ -33,7 +33,7 @@
     <div class="col text-center mt-5 mb-3"><a href="{{route('agenda.cliente')}}" class="navbar-brand text-white">Reservar Hora</a></div>
     <div class="col text-center mt-5 mb-3"><a href="{{ url('/tienda') }}" class="navbar-brand text-white">Productos</a></div>
 
-    <div class="col text-end mt-5 mb-3 "><a href="#"></a><img src="{!! asset('images/Car.png') !!}" width="35px" height="30px"  ></div>
+    <div class="col text-end mt-5 mb-3 " hidden><a href="#"></a><img src="{!! asset('images/Car.png') !!}" width="35px" height="30px"  ></div>
     <div class="col text-center mt-5 mb-3"> <a href="{{ url('/horas') }}"><img src="{!! asset('images/Person.png') !!}" width="30px" height="30px"></a></div>
 
     </div>
