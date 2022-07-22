@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('principal.index');
 });
 
 Route::get('/header', function () {
@@ -45,7 +45,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/horas', function () {
         return view('agenda.gestionHoras');
 
-    });;
+    })->name('ruta.horas');;
 });
 
 
@@ -84,16 +84,9 @@ Route::get('/reserva', function () {
     return view('users.editar');
  });
 
-
-
-
-
-
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 //Productos
 Route::prefix('productos')->group(function(){
@@ -106,10 +99,6 @@ Route::put('/{productos}',[ ProductosController::class, 'update' ])->name('tiend
 Route::delete('/{productos}',[ ProductosController::class, 'destroy' ])->name('tienda.eliminar');
 
 Route::get('/descripcion/{productos}',[ ProductosController::class, 'show' ])->name('tienda.show');
-
-
-
-
 
 });
 

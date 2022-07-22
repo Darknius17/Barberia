@@ -18,6 +18,7 @@ class AgendaController extends Controller
         $this->middleware('auth');
     }
 
+
     /**
      * Display a listing of the resource.
      *
@@ -222,4 +223,8 @@ class AgendaController extends Controller
             return response()->json($agenda);
 
         }
+
+
+
+
 }

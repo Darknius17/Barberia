@@ -20,7 +20,7 @@
           </div>
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label col-2">Email</label>
-            <input type="text" class="form-group" id="exampleFormControlInput1" placeholder="" name="email" value="{{old('email', $agenda->email)}}">
+            <input type="email" class="form-group" id="exampleFormControlInput1" placeholder="" name="email" value="{{old('email', $agenda->email)}}">
             @error('email')
             <div class="alert alert-danger" role="alert">
               *{{$message}}
