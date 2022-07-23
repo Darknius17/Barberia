@@ -1,6 +1,8 @@
 
     @include('general.header')
-<!doctype html>
+
+
+    <!doctype html>
 <html>
 <div class="">
 <a class="">

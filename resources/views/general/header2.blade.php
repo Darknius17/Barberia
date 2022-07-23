@@ -40,5 +40,7 @@
     </div>
 
     </header>
+    @extends('layouts.app')
+
 
 </html>

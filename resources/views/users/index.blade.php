@@ -52,7 +52,10 @@
          <th scope="col">Eliminar</th>
          <th scope="col"> Nombre Usuario</th>
          <th scope="col">Email</th>
+         <th scope="col">Rut</th>
+         <th scope="col">Telefono</th>
          <th scope="col">Password</th>
+         <th scope="col">Tipo usuario</th>
 
        </tr>
      </thead>
@@ -66,7 +69,7 @@
 
 
        <tr>
-         <th scope="row"><a href="{{route('users.editar', $user )}}" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square "
+         <th scope="row"><a href="{{route('users.editar',$users)}}" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square "
           style="font-size: 1.5rem; color: white;"></i></a> </th>
 
          <th> <form action="{{route('users.eliminar', $users )}}" id="" method="POST">
@@ -77,7 +80,10 @@
 
                 <td>{{$users->name}}</td>
                 <td>{{$users->email}}</td>
+                <td>{{$users->rut}}</td>
+                <td>{{$users->telefono}}</td>
                 <td>{{$users->password}}</td>
+                <td>{{$users->is_admin}}</td>
 
      </form>
     </th>

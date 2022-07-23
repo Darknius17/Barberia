@@ -87,9 +87,9 @@ class EventoController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
+        $users = User::find($id);
 
-        return view('users.editar', compact('user'));
+        return view('users.editar', compact('users'));
     }
 
     /**

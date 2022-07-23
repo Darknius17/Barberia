@@ -35,13 +35,20 @@
       <a class="navbar-brand text-white"  href="{{ url('/aprende') }}">Aprende más</a>
       <a class="navbar-brand text-white" href="{{ url('/salon') }}">Salón</a>
       <a class="navbar-brand text-white" href="{{url('/contacto')}}">Contactenos</a>
-      <a class="navbar-brand text-white" href="{{route('agenda.cliente')}}">Reservar Hora</a>
+      <a class="navbar-brand text-white" href="{{route('reserva.index')}}">Reservar Hora</a>
       <a class="navbar-brand text-white" href="{{ url('/tienda') }}">Productos</a>
       <a class="navbar-brand text-white" href="#" ></a>
       <a class="navbar-brand text-white" href="#" ></a>
       <a class="navbar-brand" href="{{url('/carro')}}" hidden><img src="{!! asset('images/Car.png') !!}" width="30px" height="30px" class = "row"  ></a>
       <a class="navbar-brand" href="{{ url('/horas') }}"><img src="{!! asset('images/Person.png') !!}" width="30px" height="30px" class = "row"  ></a>
-      <a class="navbar-brand text-white" href="#" ></a>
+      <a class="navbar-brand text-white" href="#" >
+
+
+        
+
+
+         </a>
+
 
     </div>
 

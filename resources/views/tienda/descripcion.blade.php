@@ -23,7 +23,7 @@
               <p class="card-text fs-2">Valor: ${{$productos->precio}}</p>
               <p class="card-text fs-2">Stock en tienda: {{$productos->stock}}</p>
 
-              <div class="mt-5"> <a href="{{route('tienda.index')}}" target="_blank" rel="noopener noreferrer"> <button type="button" class="btn btn-primary btn-lg " >VOLVER</button> </a></div>
+              <div class="mt-5"> <a href="{{route('tienda.index')}}" target="" rel="noopener noreferrer"> <button type="button" class="btn btn-primary btn-lg " >VOLVER</button> </a></div>
               <div class="mt-5">  <button type="button" class="btn btn-warning btn-lg " hidden>Agregar al Carro</button> </div>
 
             </div>

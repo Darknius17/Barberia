@@ -7,6 +7,7 @@ use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\ReservaController;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -40,13 +41,12 @@ Route::get('/admin', function () {
     return view('admin.indexAdmin');
 });
 
-Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/horas', function () {
         return view('agenda.gestionHoras');
 
-    })->name('ruta.horas');;
-});
+    })->middleware('admin','auth');
+
 
 
 Route::get('/prueba1', function () {
@@ -77,14 +77,14 @@ Route::get('/reserva', function () {
     return view('principal.reserva');
  });
 
- Route::get('/carro', function () {
-    return view('tienda.carrito');
- });
- Route::get('/holas', function () {
-    return view('users.editar');
+ Route::get('/pruebas', function () {
+    return view('user.editar');
  });
 
+
 Auth::routes();
+
+Route::get('/holas/{id}',[ ReservaController::class, 'index' ])->name('agenda.mostrar');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -113,16 +113,22 @@ Route::prefix('agenda')->group(function(){
     Route::get('/editar/{id}',[ AgendaController::class, 'edit' ])->name('agenda.editar');
     Route::put('/editar/{agenda}',[ AgendaController::class, 'update' ])->name('agenda.actualizar');
     Route::delete('/editar/{agenda}',[ AgendaController::class, 'destroy' ])->name('agenda.eliminar');
-    Route::get('/reserva',[ AgendaController::class, 'mostrar' ])->name('agenda.cliente');
 
+
+    Route::get('/editar/{id}',[ AgendaController::class, 'editr' ])->name('agendar.editar');
+    Route::put('/editar/{agenda}',[ AgendaController::class, 'updater' ])->name('agendar.actualizar');
+
+    Route::delete('/editar/{agenda}',[ AgendaController::class, 'destroyr' ])->name('agendar.eliminar');
+
+
+    Route::get('/reserva',[ AgendaController::class, 'mostrar' ])->name('agenda.cliente');
+/*
     Route::post('/reserva/crear',[ AgendaController::class, 'store1' ])->name('agenda.reservacrear');
     Route::get('/reserva/show',[ AgendaController::class, 'show' ])->name('agenda.show');
     Route::post('/reserva/editar/{id}',[ AgendaController::class, 'edit1' ])->name('agenda.editar1');
     Route::post('/reserva/borrar/{id}',[ AgendaController::class, 'destroy1' ])->name('agenda.borrar1');
     Route::post('/reserva/actualizar/{agenda}',[ AgendaController::class, 'update1' ])->name('agenda.actualizar1');
-
-
-
+*/
 
 });
 
@@ -136,6 +142,19 @@ Route::prefix('servicio')->group(function(){
     Route::get('/editar/{id}',[ ServiciosController::class, 'edit' ])->name('servicio.editar');
     Route::put('/editar/{servicios}',[ ServiciosController::class, 'update' ])->name('servicio.actualizar');
     Route::delete('/editar/{servicios}',[ ServiciosController::class, 'destroy' ])->name('servicio.eliminar');
+
+
+
+});
+
+Route::prefix('reserva')->group(function(){
+
+    Route::get('/',[ ReservaController::class, 'index' ])->name('reserva.index');
+    Route::get('/crear',[ ReservaController::class, 'create' ])->name('reserva.crear');
+    Route::post('/crear',[ ReservaController::class, 'store' ])->name('reserva.store');
+    Route::get('/editar/{id}',[ ReservaController::class, 'edit' ])->name('reserva.editar');
+    Route::put('/editar/{reserva}',[ ReservaController::class, 'update' ])->name('reserva.actualizar');
+    Route::delete('/editar/{reserva}',[ ReservaController::class, 'destroy' ])->name('reserva.eliminar');
 
 
 
