@@ -61,6 +61,7 @@ class EventoController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->password;
+        $user->is_admin = $request->is_admin;
 
 
         $user->save();
@@ -114,6 +115,7 @@ class EventoController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->password;
+        $user->is_admin = $request->is_admin;
 
 
         $user->save();
