@@ -63,7 +63,7 @@
          <th scope="col">Hora</th>
          <th scope="col">Comentario</th>
          <th scope="col">Servicio</th>
-        
+
 
        </tr>
      </thead>

@@ -39,7 +39,7 @@
             <th scope="col">Dia</th>
             <th scope="col">Hora</th>
             <th scope="col">Comentario</th>
-            <th hidden scope="col">id_agenda</th>
+            <th  scope="col">id_agenda</th>
 
 
 
@@ -69,13 +69,16 @@
                    <td>{{$reservas->dia}}</td>
                    <td>{{$reservas->hora}}</td>
                    <td>{{$reservas->comentario}}</td>
-                   <td hidden>{{$reservas->id_agenda}}</td>
+                   <td >{{$reservas->id_agenda}}</td>
 
 
 
 
         @endforeach
         <a  href="{{route('reserva.crear')}}" class=" btn btn-primary btn-lg"> RESERVAR HORA</a>
+        <br>
+        <br>
+        <a  href="{{url('/reserva/calendario')}}" class=" btn btn-primary btn-lg"> VER HORAS RESERVADAS</a>
 
     </div>
 

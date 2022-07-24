@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    let formulario = document.querySelector("#formulariomodal");
 
    var calendarEl = document.getElementById('agenda');
    var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -33,109 +32,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
- dateClick:function(info){
-
-    formulario.reset();
 
 
-    formulario.dia.value=info.dateStr +" "+ formulario.hora.value;
-    formulario.start.value=info.startStr +" "+ formulario.hora.value;
-    formulario.end.value=info.endStr;
-
-
-
-
-
-    $("#evento").modal("show");
- },
- eventClick:function(info){
- var evento = info.event;
- console.log(evento);
-
- axios.post("http://localhost:8080/barberia1/barberia/public/agenda/reserva/editar/"+info.event.id).then((respuesta) =>{
-
-    formulario.id.value = respuesta.data.id;
-    formulario.title.value = respuesta.data.title;
-    formulario.start.value = respuesta.data.start;
-    formulario.end.value = respuesta.data.end;
-    formulario.nombreCliente.value = respuesta.data.nombreCliente;
-    formulario.email.value = respuesta.data.email;
-    formulario.rut.value = respuesta.data.rut;
-    formulario.telefono.value = respuesta.data.telefono;
-    formulario.dia.value = respuesta.data.dia +" "+ respuesta.data.hora;
-    formulario.hora.value = respuesta.data.hora;
-    formulario.comentario.value = respuesta.data.comentario;
-    formulario.id_servicio.value = respuesta.data.id_servicio;
-    $("#evento").modal("show");
-
-  }
-  ).catch(
-      error=>{
-          if(error.response){
-              console.log(error.response.data);
-          }
-      }
-  )
-
- }
-
-
-
-  });
-
-
-
-  document.getElementById("btnGuardar").addEventListener("click",function(){
-
-    enviarDatos("http://localhost:8080/barberia1/barberia/public/agenda/reserva/crear");
-
-    alert("Se a reservado con exito su hora");
-
-  });
-
-  document.getElementById("btnEliminar").addEventListener("click", function (){
-
-    enviarDatos("http://localhost:8080/barberia1/barberia/public/agenda/reserva/borrar/"+formulario.id.value);
-
-    alert("Se a Eliminado con exito su hora");
-
-  });
-
-  document.getElementById("btnModificar").addEventListener("click",function(){
-
-    enviarDatos("http://localhost:8080/barberia1/barberia/public/agenda/reserva/actualizar/"+formulario.id.value);
-
-    alert("Se a Modificado con exito su hora");
-
-
-  });
-
-  document.getElementById("start").addEventListener("",function(){
-
-  });
-
-    function enviarDatos(url){
-
-
-    const datos= new FormData(formulario);
-    axios.post(url, datos).then((respuesta) =>{
-
-    calendar.refetchEvents();
-    $("#evento").modal("hide");
-
-  }
-  ).catch(
-      error=>{
-          if(error.response){
-              console.log(error.response.data);
-          }
-      }
-  )
-
-
-
-}
-
+});
 calendar.render();
 });
 
