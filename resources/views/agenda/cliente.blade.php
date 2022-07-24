@@ -52,7 +52,7 @@
 
                       <div class="form-group">
                         <label for="start">Fecha reserva iniciada</label>
-                        <input type="datetime-local" min="2021-07-22T00:00" max="2022-07-22T02:00"class="form-control" name="start" id="start" aria-describedby="helpId" placeholder="" value=""  >
+                        <input type="datetime-local" class="form-control" name="start" id="start" aria-describedby="helpId" placeholder="" value=""  >
                         <small id="helpId" class="form-text text-muted">Seleccione la Hora y dia de Reserva</small>
                       </div>
 
@@ -163,7 +163,73 @@
     </div>
 </div>
 
+<hr>
 
+
+<div class="container p-5">
+
+
+
+
+     <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-3">
+       <a href="{{route('agenda.crear')}}" class="btn btn-primary me-md-2" type="button">Nueva Hora</a>
+     </div>
+     <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-3">
+      <a href="{{route('servicio.index')}}" class="btn btn-primary me-md-2" type="button">Ajustes de Servicios</a>
+    </div>
+
+   <div class="border  p-3"  >
+   <table class="table">
+
+       <thead>
+         <tr>
+           <th scope="col">Nombre Usuario</th>
+           <th scope="col">Servicio</th>
+           <th scope="col">Dia</th>
+           <th scope="col">Hora</th>
+           <th scope="col">Comentario</th>
+
+
+         </tr>
+       </thead>
+
+
+
+       <tbody>
+        @foreach ($reserva as $reservas)
+
+
+
+         <tr>
+           <th scope="row"><a href="{{route('agenda.editar', $agendas )}}" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square "
+            style="font-size: 1.5rem; color: white;"></i></a>   </th>
+        <th>     <form action="{{route('agenda.eliminar', $agendas )}}" method="POST">
+                 @csrf @method('delete')
+                  <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash "
+                    style="font-size: 1.5rem; color: white;"></i></button>
+                </form>
+              </th>
+
+                  <td>{{$reservas->nombreU}}</td>
+                  <td>{{$reservas->nombreS}}</td>
+                  <td>{{$reservas->dia}}</td>
+                  <td>{{$reservas->hora}}</td>
+                  <td>{{$reservas->comentario}}</td>
+
+
+       @endforeach
+
+
+
+         </tr>
+
+
+
+
+
+       </tbody>
+     </table>
+   </div>
 
 
 @endsection

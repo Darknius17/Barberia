@@ -137,6 +137,18 @@ class AgendaController extends Controller
         return view('agenda.editar', compact('agenda','servicios'));
     }
 
+    public function editr($id)
+    {
+        $servicios = Servicios::all();
+        $agenda = Agendaservicios::find($id);
+
+        return view('agenda.editarr', compact('agenda','servicios'));
+    }
+
+
+
+
+
 
     public function edit1($id)
     {
@@ -184,6 +196,42 @@ class AgendaController extends Controller
         return redirect()->route('agenda.index');
     }
 
+    public function updater(Request $request, agenda $agenda)
+    {
+        $request->validate([
+
+            'nombreCliente'=> 'required',
+            'email'=> 'required',
+            'rut'=> 'required',
+            'telefono'=> 'required',
+            'dia' => 'required',
+            'hora' => 'required',
+            'comentario'=> 'required',
+            'id_servicio'=> 'required'
+
+
+
+        ]);
+
+
+        $agenda->nombreCliente = $request->nombreCliente;
+        $agenda->email = $request->email;
+        $agenda->rut = $request->rut;
+        $agenda->telefono = $request->telefono;
+        $agenda->dia = $request->dia;
+        $agenda->hora = $request->hora;
+        $agenda->comentario = $request->comentario;
+        $agenda->id_servicio = $request->id_servicio;
+
+
+
+        $agenda->save();
+
+        return redirect()->route('reserva.index');
+    }
+
+
+
 
     public function destroy(agenda $agenda)
     {
@@ -191,6 +239,14 @@ class AgendaController extends Controller
 
         return redirect()->route('agenda.index');
     }
+    public function destroyr(agenda $agenda)
+    {
+        $agenda->delete();
+
+        return redirect()->route('reserva.index');
+    }
+
+
 
     public function destroy1($id)
     {
