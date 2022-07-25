@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
        },
 
        hiddenDays: [0],
-       events: baseURL + "/public/agenda/reserva/show",
+       events: "http://54.162.157.17/reserva/calendario/public/agenda/reserva/show",
 
 
 
