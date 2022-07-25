@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
        },
 
        hiddenDays: [0],
-       events: baseURL + "/reserva/show",
+       events: baseURL + "/public/agenda/reserva/show",
 
 
 
