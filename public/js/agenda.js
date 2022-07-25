@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
        },
 
        hiddenDays: [0],
-       events: "http://localhost:8080/barberia1/barberia/public/agenda/reserva/show",
+       events: baseURL + "/barberia/public/agenda/reserva/show",
 
 
 
