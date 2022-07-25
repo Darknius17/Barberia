@@ -8,8 +8,11 @@
 <div class="container">
 
 
+    <div class="container-fluid">
+<div class="col">  <a  href="{{route('reserva.crear')}}" class=" btn btn-success btn-lg"> RESERVAR HORA</a>
+    <a  href="{{route('reserva.index')}}" class=" btn btn-primary btn-lg">  VOLVER</a> </div>
 
-
+</div>
 
 
     <div id="agenda"> </div>
@@ -21,11 +24,11 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="evento" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="false">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">RESERVA DE HORA</h5>
+                <h5 class="modal-title">HORAS RESERVA</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -129,10 +132,7 @@
                         <select type="number" class="form-group" id="id_servicio" placeholder="" name="id_servicio" value="{{old('id_servicio')}}" required>
                           <option value="" >Selecciona una categoria</option>
 
-                          @foreach ($servicios as $servicio)
-                          <option value="{{$servicio->id}}">{{$servicio->nombre}}</option>
 
-                          @endforeach
 
                         </select>
                         @error('id_servicio')
@@ -163,72 +163,13 @@
     </div>
 </div>
 
-<hr>
-
-
-<div class="container p-5">
-
-
-
-
-     <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-3">
-       <a href="{{route('agenda.crear')}}" class="btn btn-primary me-md-2" type="button">Nueva Hora</a>
-     </div>
-     <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-3">
-      <a href="{{route('servicio.index')}}" class="btn btn-primary me-md-2" type="button">Ajustes de Servicios</a>
-    </div>
-
-   <div class="border  p-3"  >
-   <table class="table">
-
-       <thead>
-         <tr>
-           <th scope="col">Nombre Usuario</th>
-           <th scope="col">Servicio</th>
-           <th scope="col">Dia</th>
-           <th scope="col">Hora</th>
-           <th scope="col">Comentario</th>
-
-
-         </tr>
-       </thead>
-
-
-
-       <tbody>
-        @foreach ($reserva as $reservas)
-
-
-
-         <tr>
-           <th scope="row"><a href="{{route('agenda.editar', $agendas )}}" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square "
-            style="font-size: 1.5rem; color: white;"></i></a>   </th>
-        <th>     <form action="{{route('agenda.eliminar', $agendas )}}" method="POST">
-                 @csrf @method('delete')
-                  <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash "
-                    style="font-size: 1.5rem; color: white;"></i></button>
-                </form>
-              </th>
-
-                  <td>{{$reservas->nombreU}}</td>
-                  <td>{{$reservas->nombreS}}</td>
-                  <td>{{$reservas->dia}}</td>
-                  <td>{{$reservas->hora}}</td>
-                  <td>{{$reservas->comentario}}</td>
-
-
-       @endforeach
-
-
-
-         </tr>
 
 
 
 
 
-       </tbody>
-     </table>
+
+
    </div>
 
 

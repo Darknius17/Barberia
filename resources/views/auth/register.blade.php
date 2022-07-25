@@ -65,6 +65,16 @@
                                     value="{{ old('email') }}" required autocomplete="email">
                             </div>
                         </div>
+                                                <!-- RUT -->
+                        <div class="form-group">
+                            <div class="input-group input-group-alternative mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Rut" type="rut" name="rut"
+                                    value="{{ old('rut') }}" required autocomplete="rut">
+                            </div>
+                        </div>
 
                         <!-- PASSWORD -->
                         <div class="form-group">

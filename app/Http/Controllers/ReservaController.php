@@ -22,7 +22,6 @@ class ReservaController extends Controller
     {
 
      //   $reserva = Reserva::find($id);
-
         //var_dump($id);
         $reservaadmin = auth()->user()->name;
         $agenda = Agenda::all();
@@ -55,6 +54,7 @@ class ReservaController extends Controller
      */
     public function store(Request $request)
     {
+        $prueba = $request->dia ." ". $request->hora;
 
 
         $agenda = new Agenda();
@@ -69,8 +69,8 @@ class ReservaController extends Controller
         $agenda->comentario = $request->comentario;
         $agenda->id_servicio = $request->id_servicio;
         $agenda->id_usuario = $request->id_usuario;
-        $agenda->title = $request->title;
-        $agenda->start = $request->start;
+        $agenda->title = "Hora Reservada";
+        $agenda->start = $prueba;
         $agenda->end = $request->end;
 
 

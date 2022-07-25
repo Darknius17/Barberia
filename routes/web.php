@@ -77,8 +77,8 @@ Route::get('/reserva', function () {
     return view('principal.reserva');
  });
 
- Route::get('/pruebas', function () {
-    return view('user.editar');
+ Route::get('/reserva/calendario', function () {
+    return view('agenda.cliente');
  });
 
 
@@ -115,16 +115,11 @@ Route::prefix('agenda')->group(function(){
     Route::delete('/editar/{agenda}',[ AgendaController::class, 'destroy' ])->name('agenda.eliminar');
 
 
-    Route::get('/editar/{id}',[ AgendaController::class, 'editr' ])->name('agendar.editar');
-    Route::put('/editar/{agenda}',[ AgendaController::class, 'updater' ])->name('agendar.actualizar');
+    Route::get('/reserva/show',[ AgendaController::class, 'show' ])->name('agenda.show');
 
-    Route::delete('/editar/{agenda}',[ AgendaController::class, 'destroyr' ])->name('agendar.eliminar');
-
-
-    Route::get('/reserva',[ AgendaController::class, 'mostrar' ])->name('agenda.cliente');
 /*
     Route::post('/reserva/crear',[ AgendaController::class, 'store1' ])->name('agenda.reservacrear');
-    Route::get('/reserva/show',[ AgendaController::class, 'show' ])->name('agenda.show');
+
     Route::post('/reserva/editar/{id}',[ AgendaController::class, 'edit1' ])->name('agenda.editar1');
     Route::post('/reserva/borrar/{id}',[ AgendaController::class, 'destroy1' ])->name('agenda.borrar1');
     Route::post('/reserva/actualizar/{agenda}',[ AgendaController::class, 'update1' ])->name('agenda.actualizar1');
@@ -156,7 +151,13 @@ Route::prefix('reserva')->group(function(){
     Route::put('/editar/{reserva}',[ ReservaController::class, 'update' ])->name('reserva.actualizar');
     Route::delete('/editar/{reserva}',[ ReservaController::class, 'destroy' ])->name('reserva.eliminar');
 
+    Route::get('/editar1/{id}',[ AgendaController::class, 'editr' ])->name('agendar.editar');
+    Route::put('/editar1/{agenda}',[ AgendaController::class, 'updater' ])->name('agendar.actualizar');
 
+    Route::delete('/editar1/{agenda}',[ AgendaController::class, 'destroyr' ])->name('agendar.eliminar');
+
+
+    Route::get('/reserva',[ AgendaController::class, 'mostrar' ])->name('agenda.cliente');
 
 });
 

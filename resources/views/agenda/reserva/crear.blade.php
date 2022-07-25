@@ -3,7 +3,7 @@
 @include('admin.headeradmin')
 <body>
 
-  <form action="{{route('reserva.store')}}" method="POST">
+  <form action="{{route('reserva.store')}}" method="POST" id="reserva">
     @csrf
 
     <div class="container">
@@ -11,7 +11,7 @@
 <div class="container-sm mt-5 mb-5 text-justify ">
 <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label col-2">Nombre Cliente</label>
-    <input type="text"   class="form-group" id="nombreCliente" placeholder="" name="nombreCliente" value="{{Auth::user()->name}}">
+    <input type="text"   class="form-group" id="nombreCliente" placeholder="" name="nombreCliente" required value="{{Auth::user()->name}}">
     @error('nombreCliente')
     <div class="alert alert-danger" role="alert">
       *{{$message}}
@@ -20,7 +20,7 @@
   </div>
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label col-2">Email</label>
-    <input type="text"  class="form-group" id="exampleFormControlInput1" placeholder="" name="email" value="{{Auth::user()->email}}">
+    <input type="text"  class="form-group" id="exampleFormControlInput1" placeholder="" required name="email" value="{{Auth::user()->email}}">
     @error('email')
     <div class="alert alert-danger" role="alert">
       *{{$message}}
@@ -29,7 +29,7 @@
   </div>
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label col-2">Rut</label>
-    <input type="text"      class="form-group" id="exampleFormControlInput1" placeholder="" name="rut" value="{{Auth::user()->rut}}">
+    <input type="text"      class="form-group" id="exampleFormControlInput1" placeholder=""  required name="rut" value="{{Auth::user()->rut}}">
     @error('rut')
     <div class="alert alert-danger" role="alert">
       *{{$message}}
@@ -38,7 +38,7 @@
   </div>
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label col-2">Telefono</label>
-    <input type="number"  class="form-group" id="exampleFormControlInput1" placeholder="" name="telefono" value="{{Auth::user()->telefono}}">
+    <input type="number"  class="form-group" id="exampleFormControlInput1" placeholder="" required name="telefono" value="{{Auth::user()->telefono}}">
     @error('telefono')
     <div class="alert alert-danger" role="alert">
       *{{$message}}
@@ -46,9 +46,11 @@
     @enderror
   </div>
 
+
+
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label col-2">Dia</label>
-    <input type="date" min="2022-07-11" class="form-group" id="exampleFormControlInput1" placeholder="" name="dia" value="{{old('dia')}}">
+    <input type="date" min="" onChange="sinDomingos();" onblur="obtenerfechafinf1();" required  class="form-group" id="dia" placeholder="" name="dia" value="{{old('dia')}}">
 
     @error('dia')
     <div class="alert alert-danger" role="alert">
@@ -59,7 +61,7 @@
 
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label col-2">Hora</label>
-    <select type="number" class="form-group" id="hora" placeholder="  " name="hora" value="{{old('hora')}}">
+    <select type="number" class="form-group" id="hora" placeholder="  " required name="hora" value="{{old('hora')}}">
       <option> 11:00 </option>
       <option> 12:00 </option>
       <option> 13:00 </option>
@@ -120,8 +122,8 @@
 
 
 
-  <a href="{{route('agenda.index')}}" class="btn btn-primary btn-lg">VOLVER</a>
-  <button type="submit" class="btn btn-primary btn-lg" name="">AGREGAR</button>
+  <a href="{{route('reserva.index')}}" class="btn btn-primary btn-lg">VOLVER</a>
+  <button type="submit" class="btn btn-primary btn-lg" name="submitt" id="submitt">AGREGAR</button>
 
     </div>
 </div>
@@ -131,5 +133,31 @@
 </div>
 </body>
 
+<script>
+    var elDate = document.getElementById('dia');
+    var elForm = document.getElementById('reserva');
+    var elSubmit = document.getElementById('submitt');
+
+    function sinDomingos(){
+        var day = new Date(elDate.value ).getUTCDay();
+        // Días 0-6, 0 es Domingo 6 es Sábado
+        elDate.setCustomValidity(''); // limpiarlo para evitar pisar el fecha inválida
+        if( day == 0 ){
+           elDate.setCustomValidity('Domingos no disponibles, por favor seleccione otro día');
+        } else {
+           elDate.setCustomValidity('');
+        }
+        if(!elForm.checkValidity()) {elSubmit.click()};
+    }
+
+    function obtenerfechafinf1(){
+        sinDomingos();
+    }
+
+    </script>
+
+
+
 
 @include('general.footer')
+
